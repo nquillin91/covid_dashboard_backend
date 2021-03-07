@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		if (!isLocalInstance) {
 			http.cors().configurationSource(corsConfigurationSource()).and().csrf().disable()
 				.authorizeRequests()
-				.antMatchers("/sign-up/**", "/login/**").permitAll()
+				.antMatchers("/", "/sign-up/**", "/login/**").permitAll()
 				.anyRequest().authenticated().and()
 				.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
 				.and().sessionManagement()
