@@ -7,10 +7,12 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
 import com.covid.dashboard.config.JwtTokenUtil;
 import com.covid.dashboard.dto.JwtResponse;
 
+@Service
 public class JwtAuthenticationService {
 	@Autowired
 	private AuthenticationManager authenticationManager;
