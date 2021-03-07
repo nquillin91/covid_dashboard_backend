@@ -46,7 +46,7 @@ public class SqlDataSourceConfiguration {
     public LocalContainerEntityManagerFactoryBean sqlEntityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(sqlDataSource());
-        em.setPackagesToScan(new String[]{"com.covid.dashboard.model.sql"});
+        em.setPackagesToScan(new String[]{"com.covid.dashboard.model"});
         em.setPersistenceUnitName("trueid");
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
