@@ -1,4 +1,4 @@
-package com.covid.dashboard.model;
+package com.covid.dashboard.dto;
 
 import java.io.Serializable;
 

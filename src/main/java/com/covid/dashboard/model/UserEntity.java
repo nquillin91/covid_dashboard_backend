@@ -1,30 +1,22 @@
-package com.covid.dashboard.model.sql;
+package com.covid.dashboard.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -60,76 +52,76 @@ public class UserEntity implements UserDetails {
 	@Getter
 	@Setter
 	@Column(name="first_name")
-	private String firstName
+	private String firstName;
 
 	@Getter
 	@Setter
 	@Column(name="middle_name")
-	private String middleName
+	private String middleName;
 
 	@Getter
 	@Setter
 	@Column(name="last_name")
-	private String lastName
+	private String lastName;
 
 	@Getter
 	@Setter
 	@Column(name="gender")
-	private String gender
+	private String gender;
 
 	@Getter
 	@Setter
 	@Column(name="phone_number")
-	private String phoneNumber
+	private String phoneNumber;
 
 	@Getter
 	@Column(name="zipcode")
-	private String zipcode
+	private String zipcode;
 
 	@Getter
 	@Setter
 	@Column(name="has_pre_existing_conditions")
-	private boolean hasPreExistingConditions
+	private boolean hasPreExistingConditions;
 
 	@Getter
 	@Setter
 	@Column(name="is_following_hygiene_guidelines")
-	private boolean isFollowingHygieneGuidelines
+	private boolean isFollowingHygieneGuidelines;
 
 	@Getter
 	@Setter
 	@Column(name="is_adhering_to_ppp_guidelines")
-	private boolean isAdheringToPPPGuidelines
+	private boolean isAdheringToPPPGuidelines;
 
 	@Getter
 	@Setter
 	@Column(name="vaccine_status")
-	private String vaccineStatus
+	private String vaccineStatus;
 
 	@Getter
 	@Setter
 	@Column(name="has_roomates")
-	private boolean hasRoommates
+	private boolean hasRoommates;
 
 	@Getter
 	@Setter
 	@Column(name="direct_exposure_count")
-	private int directExposureCount
+	private int directExposureCount;
 
 	@Getter
 	@Setter
 	@Column(name="indirect_exposure_count")
-	private int indirectExposureCount
+	private int indirectExposureCount;
 
 	@Getter
 	@Setter
 	@Column(name="is_first_responder")
-	private boolean isFirstResponder
+	private boolean isFirstResponder;
 
 	@Getter
 	@Setter
 	@Column(name="is_essential_worker")
-	private boolean isEssentialWorker
+	private boolean isEssentialWorker;
 	
 	@Getter
 	@Column(name="created_date")
@@ -144,19 +136,13 @@ public class UserEntity implements UserDetails {
 		this.username = username;
 		this.password = password;
 		this.birthdate = birthDate;
-		this.enabled = false;
 		this.createdDate = LocalDateTime.now();
 		this.lastUpdatedDate = LocalDateTime.now();
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Collection<RoleEntity> roles = this.getRoles();
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-         
-        for (RoleEntity role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
          
         return authorities;
 	}
@@ -178,6 +164,6 @@ public class UserEntity implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return truev;
+		return true;
 	}
 }
