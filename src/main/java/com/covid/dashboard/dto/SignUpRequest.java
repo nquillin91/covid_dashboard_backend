@@ -12,7 +12,7 @@ public class SignUpRequest {
 	private String gender;
 	private String birthDate;
 	private String phoneNumber;
-	private String zipCode;
+	private String zipcode;
 	private boolean hasPreExistingConditions;
 	private boolean isFollowingHygieneGuidelines;
 	private boolean isAdheringToPPPGuidelines;

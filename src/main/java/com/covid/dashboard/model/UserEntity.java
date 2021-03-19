@@ -36,7 +36,6 @@ public class UserEntity implements UserDetails {
 	private Long id;
 	
 	@Getter
-	@Setter
 	@Column(name="user_name")
 	private String username;
 	
@@ -75,6 +74,7 @@ public class UserEntity implements UserDetails {
 	private String phoneNumber;
 
 	@Getter
+	@Setter
 	@Column(name="zipcode")
 	private String zipcode;
 

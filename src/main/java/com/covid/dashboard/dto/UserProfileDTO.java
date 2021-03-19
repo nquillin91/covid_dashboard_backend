@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class UserProfileDTO {
-	private Long id;
 	private String username;
 	private String firstName;
 	private String middleName;
@@ -12,7 +11,7 @@ public class UserProfileDTO {
 	private String gender;
 	private String birthDate;
 	private String phoneNumber;
-	private String zipCode;
+	private String zipcode;
 	private boolean hasPreExistingConditions;
 	private boolean isFollowingHygieneGuidelines;
 	private boolean isAdheringToPPPGuidelines;

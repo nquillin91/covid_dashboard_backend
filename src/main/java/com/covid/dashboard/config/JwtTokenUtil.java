@@ -23,7 +23,7 @@ public class JwtTokenUtil implements Serializable {
 	@Value("${jwt.secret}")
 	private String secret;
 	
-	public String getUserId(String token) {
+	public String getUsername(String token) {
 		return getClaimFromToken(token, Claims::getSubject);
 	}
 	
@@ -49,7 +49,7 @@ public class JwtTokenUtil implements Serializable {
 	public String generateToken(UserDetails userDetails) {
 		Map<String, Object> claims = new HashMap<String, Object>();
 		
-		return doGenerateToken(claims, Long.toString(((JwtUserDetails) userDetails).getUserId()));
+		return doGenerateToken(claims, userDetails.getUsername());
 	}
 	
 	private String doGenerateToken(Map<String, Object> claims, String subject) {
@@ -59,8 +59,8 @@ public class JwtTokenUtil implements Serializable {
 	}
 	
 	public Boolean validateToken(String token, UserDetails userDetails) {
-		final String userId = getUserId(token);
-		final String userDetailsUserId = Long.toString(((JwtUserDetails) userDetails).getUserId());
-		return (userId.equals(userDetailsUserId) && !isTokenExpired(token));
+		final String username = getUsername(token);
+		final String userDetailsUsername = userDetails.getUsername();
+		return (username.equals(userDetailsUsername) && !isTokenExpired(token));
 	}
 }

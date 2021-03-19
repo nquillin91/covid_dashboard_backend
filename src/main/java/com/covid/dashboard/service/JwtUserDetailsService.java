@@ -33,24 +33,6 @@ public class JwtUserDetailsService implements UserDetailsService {
 		return new JwtUserDetails(
 				user.getUsername(), 
                 user.getPassword(),
-                user.getId(),
-                new ArrayList<GrantedAuthority>()
-        );
-	}
-	
-	public UserDetails loadUserByUserId(String userId) {
-		Optional<UserEntity> optionalUser = userRepository.findById(Long.parseLong(userId));
-
-		if (!optionalUser.isPresent()) {
-			throw new UsernameNotFoundException(userId + " not found.");
-		}
-		
-		UserEntity user = optionalUser.get();
-		
-		return new JwtUserDetails(
-				user.getUsername(), 
-                user.getPassword(),
-                user.getId(),
                 new ArrayList<GrantedAuthority>()
         );
 	}
