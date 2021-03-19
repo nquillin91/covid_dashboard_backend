@@ -28,8 +28,10 @@ public class UserController {
     }
 
     @PostMapping(value = "/users/user/profile", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void updateUserProfile(UserProfileDTO userProfileDTO) throws Exception {
-        userService.updateUserProfile(userProfileDTO);
+    public void updateUserProfile(HttpServletRequest request, @RequestBody UserProfileDTO userProfileDTO) throws Exception {
+    	String username = request.getUserPrincipal().getName();
+    	
+        userService.updateUserProfile(username, userProfileDTO);
     }
     
     @PostMapping(value = "/sign-up", consumes = MediaType.APPLICATION_JSON_VALUE)

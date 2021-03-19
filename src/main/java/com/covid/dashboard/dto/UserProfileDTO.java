@@ -21,4 +21,8 @@ public class UserProfileDTO {
 	private int indirectlyExposedCount;
 	private boolean isFirstResponder;
 	private boolean isEssentialWorker;
+	
+	public UserProfileDTO() {
+		System.out.println("UserProfileDTO Created");
+	}
 }

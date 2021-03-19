@@ -8,7 +8,6 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,9 +21,6 @@ import com.covid.dashboard.repository.UserRepository;
 @Service
 public class UserService {
 	Logger logger = LoggerFactory.getLogger(UserService.class);
-	
-	@Value("${app.host}")
-	private String appHost;
 	
     @Autowired
     private UserRepository userRepository;
@@ -48,8 +44,8 @@ public class UserService {
     	return userProfileConverter.toResponse(optionalUser.get());
     }
 
-    public void updateUserProfile(UserProfileDTO userProfileDTO) throws Exception {
-    	Optional<UserEntity> optionalUser = userRepository.findByUsername(userProfileDTO.getUsername());
+    public void updateUserProfile(String username, UserProfileDTO userProfileDTO) throws Exception {
+    	Optional<UserEntity> optionalUser = userRepository.findByUsername(username);
 		
 		if (optionalUser.isPresent()) {
 			UserEntity user = optionalUser.get();
